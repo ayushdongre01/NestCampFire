@@ -8,9 +8,12 @@
     height:300px;
 }
 
-@media (max-width: 768px) {
+.map-container {
+    height: 300px; /* Ensures the map has a fixed height on mobile */
+    margin-bottom: 20px;
+}
+@media (min-width: 992px) {
     .map-container {
-        height: 300px;
-        margin-bottom: 20px; /* Add spacing below map */
+        height: 100%; /* Takes full height on desktop */
     }
 }

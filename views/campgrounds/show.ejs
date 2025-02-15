@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/stylesheets/stars.css">
 <div class="row">
     <!-- <div class="col-6"> -->
-    <div class="col-lg-6 col-12 order-2 order-lg-1"></div>
+      <div class="col-12 col-lg-6 order-2 order-lg-1">
         <div class="card mb-3">
           <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -46,14 +46,14 @@
               </div>
             <% }%>
     </div>
-    
+
     <!-- <div class="col-6"> -->
-      <div class="col-lg-6 col-12 order-1 order-lg-2"> 
+      <div class="col-12 col-lg-6 order-1 order-lg-2">
         <!-- here -->
         <div id='map' class="map-container">
       </div>
 
-
+    <div class="col-12 order-3">
       <%if(currentUser){%>
         <h2>Leave a Review</h2>
               <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="validated-form mb-3" novalidate>
@@ -98,9 +98,10 @@
                 </div>
               </div>            
             <%}%>
+      </div>
     </div>
 </div>
-
+</div>
 <script>
   const maptilerApiKey = '<%-process.env.MAPTILER_API_KEY%>';
   const campground = <%- JSON.stringify(campground) %> ;
