@@ -1,0 +1,84 @@
+<%layout('layouts/boilerplate.ejs')%> <!--Specifies boilerplate.ejs as the layout template-->
+    <a href="/campgrounds/<%=campground._id%>">Back to the campground</a>
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
+        <div class="col-md-6 offset-md-3">    <!-- 'col-6' makes this column take up 6 out of 12 available grid columns (50% width), and 'offset-3' adds a left margin of 3 columns (25% width), centering the column within a 12-column grid. -->
+            <form action="/campgrounds/<%=campground._id %>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data"> <!-- Update campground with PUT method using method-override -->
+                <!--Title-->
+                <div class="mb-3"> <!-- 'mb-3' adds a margin-bottom of 1rem (16px by default) to the element, creating space below it. -->
+                    <label class="form-label" for="title" >Title</label><!-- The 'form-label' class applies Bootstrap styling to the label -->
+                    <input class="form-control" type="text" id="title" name="campground[title]" value="<%=campground.title%>" required>
+                    <div class="valid-feedback"> <!-- Telling user that the input is good to go-->
+                        Looks good!
+                    </div>
+                </div>
+                <!--Location-->
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" value="<%=campground.location%>" required><!-- 'form-control' applies Bootstrap styling to the input, making it a full-width, styled input field.'name="campground[title]"' is used to define the form data when submitted, with the input value being part of the 'campground' object.-->
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+
+                <!--Price-->
+                <div class="mb-3">
+                    <label class="form-label" for="price">Campground price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">&#8377</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price" aria-describedby="price-label" name="campground[price]" value="<%=campground.price%>" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                </div>
+                <!--Description-->
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]" required><%=campground.description%></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <!--Image-->
+                <!-- Bootstrap 5 File Input with Dynamic File Name Display -->
+                <div class="mb-3">
+                    <label class="form-label" for="image">Add Image(s)</label>
+                    <input type="file" class="form-control" id="image" name="image" multiple>
+                    <small id="fileNames" class="form-text text-muted"></small>
+                </div>
+
+                <!-- JavaScript: Ensure DOM is fully loaded before accessing elements -->
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.getElementById('image').addEventListener('change', function () {
+                        let fileList = Array.from(this.files).map(file => file.name).join(', '); 
+                        document.getElementById('fileNames').textContent = fileList || "No files selected";
+                    });
+                });
+                </script>
+
+                <!-- Display Existing Images with Delete Option -->
+                <div class="mb-3">
+                    <% campground.images.forEach(function(img, i) { %>
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="<%= img.thumbnail %>" class="img-thumbnail me-2" alt="Image" style="width: 100px; height: auto;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="image-<%= i %>" name="deleteImages[]" value="<%= img.filename %>">
+                                <label class="form-check-label" for="image-<%= i %>">Delete?</label>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+                <!--Button-->
+                <div class="mb-3">
+                    <button class="btn btn-info">Update campground</button>
+                </div>
+                
+            </form>
+            <a href="/campgrounds/<%=campground._id%>">Back to the campground</a>
+        </div>
+    </div>
+    
