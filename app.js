@@ -25,10 +25,9 @@ const reviewsRoutes = require('./routes/reviews');
 
 // 'mongodb://127.0.0.1:27017/yelp_camp'
 //Connecting to the mongoose database
-//console.log("Connecting to MongoDB at:", process.env.DB_URL);
 
-//const dbURL = process.env.DB_URL;
-const dbURL = 'mongodb://127.0.0.1:27017/yelp_camp';
+const dbURL = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp_camp';
+
 mongoose.connect(dbURL) //database name is yelp_camp
     .then(()=>{
         console.log("MONGO CONNECTION OPEN!!!");
@@ -46,18 +45,20 @@ app.use(express.urlencoded({extended:true})); //Middleware helps to parse the fo
 app.use(methodOverride('_method'));//Enable method-override to support HTTP verbs like PUT and DELETE in HTML forms using _method query parameter
 app.use(express.static(path.join(__dirname,'public')));
 
+const secret = process.env.secret || 'thisshouldbeabettersecret!';
+
 const store = MongoDBStore.create({
     mongoUrl:dbURL,
     touchAfter:24*60*60,
     crypto:{
-        secret:'thisshouldbeabettersecret!'
+        secret
     }
 });
 
 const sessionConfig = {
     store,
     name:'session',
-    secret: 'thisshouldbeabettersecret!',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -151,7 +152,9 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render('error',{err}); // Render error page with status and message
 });
 
+const port = process.env.PORT || 3000;
+
 //Starting the server and listening on the port 3000
-app.listen(3000,()=>{
-    console.log("Serving on port 3000");
+app.listen(port,()=>{
+    console.log(`Serving on port ${port}`);
 })
