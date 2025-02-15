@@ -7,3 +7,10 @@
     width:100%;
     height:300px;
 }
+
+@media (max-width: 768px) {
+    .map-container {
+        height: 300px;
+        margin-bottom: 20px; /* Add spacing below map */
+    }
+}
