@@ -18,6 +18,9 @@ const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoDBStore=require('connect-mongo');
+const { SitemapStream, streamToPromise } = require('sitemap');
+const fs = require('fs');
+
 
 const userRoutes = require('./routes/users');
 const campgroundsRoutes = require('./routes/campgrounds');
@@ -44,6 +47,39 @@ app.set('views',path.join(__dirname,'views')); //Setting the path for the views 
 app.use(express.urlencoded({extended:true})); //Middleware helps to parse the form data sent in the request body
 app.use(methodOverride('_method'));//Enable method-override to support HTTP verbs like PUT and DELETE in HTML forms using _method query parameter
 app.use(express.static(path.join(__dirname,'public')));
+
+let sitemap;
+
+app.get('/sitemap.xml', async (req, res) => {
+    res.header('Content-Type', 'application/xml');
+
+    // If sitemap is already generated, serve it
+    if (sitemap) {
+        return res.send(sitemap);
+    }
+
+    try {
+        // Create a new sitemap stream
+        const stream = new SitemapStream({ hostname: 'https://nestcampfire.onrender.com' });
+
+        // Add important pages
+        stream.write({ url: '/', changefreq: 'daily', priority: 1.0 });
+        stream.write({ url: '/campgrounds', changefreq: 'daily', priority: 0.8 });
+        stream.write({ url: '/login', changefreq: 'monthly', priority: 0.5 });
+        stream.write({ url: '/register', changefreq: 'monthly', priority: 0.5 });
+
+        // End stream
+        stream.end();
+
+        // Convert stream to XML
+        sitemap = await streamToPromise(stream).then((data) => data.toString());
+
+        res.send(sitemap);
+    } catch (err) {
+        console.error(err);
+        res.status(500).end();
+    }
+});
 
 const secret = process.env.secret || 'thisshouldbeabettersecret!';
 
