@@ -1,20 +1,18 @@
-// Set the MapTiler API key for authentication
 maptilersdk.config.apiKey = maptilerApiKey;
 
 const map = new maptilersdk.Map({
-    container: 'map',   // HTML container ID where the map will be displayed
-    style: maptilersdk.MapStyle.BRIGHT,  // Use the 'BRIGHT' map style
+    container: 'map',
+    style: maptilersdk.MapStyle.BRIGHT,
     center: campground.geometry.coordinates, // starting position [lng, lat]
     zoom: 10 // starting zoom
 });
 
-// Create a marker at the campground's location
 new maptilersdk.Marker()
-    .setLngLat(campground.geometry.coordinates) // Set marker position
+    .setLngLat(campground.geometry.coordinates)
     .setPopup(
-        new maptilersdk.Popup({ offset: 25 })   // Create a popup with an offset
+        new maptilersdk.Popup({ offset: 25 })
             .setHTML(
-                `<h3>${campground.title}</h3><p>${campground.location}</p>` // Set the popup content with the campground title and location
+                `<h3>${campground.title}</h3><p>${campground.location}</p>`
             )
     )
-    .addTo(map)  // Add the marker to the map
+    .addTo(map)

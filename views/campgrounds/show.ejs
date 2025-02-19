@@ -4,7 +4,6 @@
 <div class="row">
     <div class="col-6">
         <div class="card mb-3">
-          <!-- Carousel for the images -->
           <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <%campground.images.forEach((img,i)=>{%>            
@@ -26,39 +25,34 @@
           </div>
 
            
-          <div class="card-body">
-            <!-- title -->
-            <h5 class="card-title"><%=campground.title%></h5>
-            <!-- description -->
-            <p class="card-text"><%=campground.description %></p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <!-- location -->
-            <li class="list-group-item text-muted"><%=campground.location%></li>
-            <!-- author -->
-            <li class="list-group-item">Submitted by <%=campground.author.username%></li>
-            <!-- price -->
-            <li class="list-group-item">&#8377;<%=campground.price%>/night</li>
-          </ul>
-          <!-- if current user is the owner of the campground then show the edit link and delete button -->
-          <%if(currentUser && campground.author.equals(currentUser._id)){%>
+
+
             <div class="card-body">
-                <!-- Edit -->
-                <a class="card-link btn btn-info" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
-                <!-- Delete -->
-                <form class="d-inline" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST"> <!--Form to delete the campground with DELETE method using method-override -->
-                    <button class="btn btn-danger">DELETE</button>
-                </form>
+              <h5 class="card-title"><%=campground.title%></h5>
+              <p class="card-text"><%=campground.description %></p>
             </div>
-          <% }%>
-        </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-muted"><%=campground.location%></li>
+              <li class="list-group-item">Submitted by <%=campground.author.username%></li>
+              <li class="list-group-item">&#8377;<%=campground.price%>/night</li>
+            </ul>
+            <%if(currentUser && campground.author.equals(currentUser._id)){%>
+              <div class="card-body">
+                  <a class="card-link btn btn-info" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
+                  <form class="d-inline" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST"> <!--Form to delete the campground with DELETE method using method-override -->
+                      <button class="btn btn-danger">DELETE</button>
+                  </form>
+              </div>
+            <% }%>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+          </div>
     </div>
     <div class="col-6">
-      <!-- map -->
+      <!-- here -->
       <div id='map'></div>
-      <!-- if user is logged in -->
       <%if(currentUser){%>
-        <!--Show leave a review option -->
         <h2>Leave a Review</h2>
               <form action="/campgrounds/<%=campground._id%>/reviews" method="POST" class="validated-form mb-3" novalidate>
                 <div class="mb-3">
@@ -86,7 +80,6 @@
                 <button class="btn btn-success">Submit</button>
               </form>
             <%} %>
-            <!-- show all the reviews -->
             <% for(let review of campground.reviews){ %>
               <div class="card mb-5">
                 <div class="card-body">
@@ -95,7 +88,6 @@
                     Rated : <%=review.rating%> stars
                   </p>            
                   <p class="card-text">Review: <%=review.body%></p>
-                  <!-- if user owns the review then show the delete review option -->
                   <% if (currentUser && review.author && review.author.equals(currentUser._id)) { %>
                     <form action="/campgrounds/<%=campground._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
                       <button class="btn btn-sm btn-danger">Delete</button>
@@ -108,8 +100,8 @@
 </div>
 
 <script>
-  const maptilerApiKey = '<%-process.env.MAPTILER_API_KEY%>';// Retrieve the MapTiler API key from environment variables and store it in a JavaScript variable
-  const campground = <%- JSON.stringify(campground) %> ; // Convert the `campground` object from the server into a JSON object for use in the client-side script
+  const maptilerApiKey = '<%-process.env.MAPTILER_API_KEY%>';
+  const campground = <%- JSON.stringify(campground) %> ;
 </script>
 
 <script src="/javascripts/showPageMap.js"></script>

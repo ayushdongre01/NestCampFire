@@ -2,15 +2,9 @@
 <div class="row">
     <div class="col-7 offset-3">
         <div class="alert alert-danger" role="alert">
-        <!-- Displays a Bootstrap alert box with a red background (danger alert) to show error messages -->
             <h4 class="alert-heading"><%=err.message%></h4>
-            <!-- Displays the error message dynamically using EJS. 
-                 "err.message" contains the error description from Express.js -->
-
-            <!-- Checks if the application is NOT running in production mode -->
             <% if(process.env.NODE_ENV!=="production"){ %>
                 <p><%=err.stack%></p>
-                <!-- If in development mode, display the complete error stack trace for debugging -->
             <%} %>
         </div>
     </div>

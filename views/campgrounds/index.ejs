@@ -1,10 +1,8 @@
 <%layout('layouts/boilerplate')%> <!-- Rendering the layout template 'boilerplate' for the page -->
 
 <div id="cluster-map""></div>
-<!-- header -->
 <h1>All Campgrounds</h1>
     <div>
-        <!-- add new campground link -->
         <a href="/campgrounds/new">Add new campground</a>
     </div>
     <%for(let campground of campgrounds){%>
@@ -40,7 +38,7 @@
 
 
 <script>
-    const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';  // Retrieve the MapTiler API key from environment variables and assign it to a JavaScript variable
-    const campgrounds = { features: <%- JSON.stringify(campgrounds) %>};// Convert the `campgrounds` data from the server into a JSON object for use in the client-side map
+    const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+    const campgrounds = { features: <%- JSON.stringify(campgrounds) %>};
 </script>
 <script src="/javascripts/clusterMap.js"></script>

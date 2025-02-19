@@ -13,10 +13,7 @@ router.route('/register')
 router.route('/login')
     .get(users.renderLogin)
     .post(storeReturnTo,passport.authenticate('local',{failureFlash:true,failureRedirect:'/login'}),users.login);
-    // Passport.js middleware to authenticate the user using the 'local' strategy.
-    // - 'failureFlash: true' enables flash messages on failure.
-    // - 'failureRedirect: /login' redirects the user back to the login page if authentication fails.
-    
+
 router.get('/logout',users.logout);
 
 module.exports = router;
