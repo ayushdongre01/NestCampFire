@@ -60,7 +60,7 @@ module.exports.validateCampground = (req, res, next) => {
 module.exports.validateReview = (req,res,next)=>{
     const {error} = reviewSchema.validate(req.body);
     if(error){
-        const msg=error.details.map(el=>el.messsage).join('.');  // Joining all error messages
+        const msg=error.details.map(el=>el.message).join('.');  // Joining all error messages
         throw new ExpressError(msg,400);  // Throwing error with status 400 (Bad Request)
     }
     else{

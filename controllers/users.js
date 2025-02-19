@@ -35,6 +35,7 @@ module.exports.renderLogin = (req,res)=>{
 
 // Function to handle user login after successful authentication
 module.exports.login = (req,res)=>{
+    console.log("User logged in:", req.user);
     req.flash('success','Welcome back!');
     // Check if there's a 'returnTo' URL stored in locals (i.e., the page the user attempted to access before login).
     // If 'returnTo' exists, redirect the user to that URL. Otherwise, redirect to '/campgrounds'.
