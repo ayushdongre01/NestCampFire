@@ -2,6 +2,11 @@
 <div class="container d-flex justify-content-center align-items-center mt-5">
     <div class="row">
         <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <!-- Defines a responsive column layout: 
+                 - col-md-6: Takes half the width on medium screens
+                 - offset-md-3: Centers the form by adding a 3-column offset 
+                 - col-xl-4: Takes 4/12 columns on extra-large screens
+                 - offset-xl-4: Centers the form for XL screens -->
             <div class="card shadow">
                 <!-- <img src="https://images.unsplash.com/photo-1587547131116-a0655a526190?q=80&w=1832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                     alt="" class="card-img-top" /> -->
@@ -10,9 +15,13 @@
                 <div class="card-body">
                     <h5 class="card-title">Register</h5>
                     <form action="/register" method="POST" class="validated-form" novalidate>
+                         <!-- Form for user registration (POST request to /register) 
+                             - 'novalidate' prevents default browser validation, allowing custom validation
+                             stops the default checkboxes provided by the browser which don't look cool -->
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" autofocus required>
+                            <!-- 'autofocus' places the cursor in the username field on page load -->
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
@@ -35,6 +44,7 @@
                         </div>
                     
                         <button class="btn btn-success w-100">Register</button>
+                        <!--full width (w-100)-->
                     </form>
                 </div>
             </div>

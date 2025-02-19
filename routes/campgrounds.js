@@ -18,7 +18,7 @@ router.get('/new',isLoggedIn,campgrounds.renderNewForm);    //ROUTE 3: create ne
 router.route('/:id')
     .get(catchAsync(campgrounds.showCampground))     //ROUTE 2: show : Route to display details of a specific campground based on its ID
     .put(isLoggedIn, isAuthor, upload.array('image'),validateCampground,catchAsync(campgrounds.updateCampground))     //ROUTE 6:put the changes on show page : Route to handle updates to specific campground
-    .delete(isAuthor,isLoggedIn,catchAsync(campgrounds.deleteCampground));   //ROUTE 7: Delete : Route to handle deletion of specific campground
+    .delete(isLoggedIn,isAuthor,catchAsync(campgrounds.deleteCampground));   //ROUTE 7: Delete : Route to handle deletion of specific campground
 
 
 router.get('/:id/edit',isLoggedIn,isAuthor,catchAsync(campgrounds.renderEditForm)); //ROUTE 5: Edit : Route to display the edit form for a specific campground

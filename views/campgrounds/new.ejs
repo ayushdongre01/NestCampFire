@@ -48,12 +48,14 @@
                 <input type="file" class="form-control" id="image" name="image" multiple>
                 <small id="fileNames" class="form-text text-muted"></small>
             </div>
+            <!-- JavaScript: Ensure DOM is fully loaded before accessing elements -->
             <script>
-            document.getElementById('image').addEventListener('change', function() {
-                let fileList = Array.from(this.files).map(file => file.name).join(', '); 
-                document.getElementById('fileNames').textContent = fileList || "No files selected";
-            });
+                document.getElementById('image').addEventListener('change', function() {
+                    let fileList = Array.from(this.files).map(file => file.name).join(', ');     // Convert the FileList object into an array and extract file names
+                    document.getElementById('fileNames').textContent = fileList || "No files selected"; // Display the selected file names in the element with ID 'fileNames' or show "No files selected" if empty
+                });
             </script>
+            
             <!--Button-->
             <div class="mb-3">
                 <button class="btn btn-success">Add campgrounds</button>

@@ -4,17 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title is NestCampFire -->
     <title>NestCampFire</title>
-    <!--Copy link from bootstrap-->
+
+    <!-- Copy link from bootstrap for styling and responsive design -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+    <!-- Plugin for customizing file input fields -->
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
- 
+
+    <!-- Maptiler SDK for integrating interactive maps -->
     <script crossorigin="anonymous" src="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.umd.min.js"></script>
     <link crossorigin="anonymous" href="https://cdn.maptiler.com/maptiler-sdk-js/v2.0.3/maptiler-sdk.css" rel="stylesheet">
+
+    <!-- Used in maps -->
     <link rel="stylesheet" href="/stylesheets/app.css">
 </head>
+
 <!-- The 'body' element is given classes 'd-flex'(display-flex) and 'flex-column' to create a flex container that arranges its 
  children (the navbar and main content) in a vertical column. 'vh-100' ensures that the body takes up the full height 
  of the viewport. -->
@@ -22,21 +28,28 @@
     <!-- The 'navbar' is being included as a partial template. This allows for reuse of the navigation bar 
      across different pages. -->
     <%-include('../partials/navbar.ejs')%>
-        <!-- The 'main' element contains the main content of the page. The 'container' class provides a responsive 
-         fixed-width container, and 'mt-5' adds a margin-top to the content. -->
-        <main class="container mt-5">
-            <%-include('../partials/flash.ejs') %>
-    <!-- The 'body' placeholder will be populated dynamically with content passed from the server (via template rendering). -->
-            <%-body%>
-        </main>
+    <!-- The 'main' element contains the main content of the page. The 'container' class provides a responsive 
+        fixed-width container, and 'mt-5' adds a margin-top to the content. -->
+    <main class="container mt-5">
+        <!-- Include flash messages for user notifications -->
+        <%-include('../partials/flash.ejs') %>
+        <!-- The 'body' placeholder will be populated dynamically with content passed from the server (via template rendering). -->
+        <%-body%>
+    </main>
+
+    <!-- Include the footer as a partial template for consistency across pages -->
     <%-include('../partials/footer.ejs')%>
-    <!--Copy script from bootstrap-->
+    
+    <!-- Copy script from bootstrap for interactivity and responsive behavior -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <!-- Popper.js for handling tooltips and popovers in Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>
+
+    <!--script for form validation -->
     <script src="/javascripts/validateForms.js"></script>
   
 </body>

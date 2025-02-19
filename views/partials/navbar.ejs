@@ -1,21 +1,32 @@
+<!-- Navigation bar with a dark theme, fixed at the top of the page -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
+         <!-- Brand logo or title linking to the homepage -->
         <a class="navbar-brand" href="#">NestCampFire</a>
+
+        <!-- Button for toggling the navbar on smaller screens -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> 
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Collapsible navbar content -->
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
+                <!-- Navigation links to different pages -->
                 <a class="nav-link" href="/">Home</a>
                 <a class="nav-link" href="/campgrounds">Campgrounds</a>
                 <a class="nav-link" href="/campgrounds/new">New Campground</a>
             </div>
+
+            <!-- User authentication links, aligned to the right -->
             <div class="navbar-nav ms-auto">
                 <% if(!currentUser) {%>
+                <!-- Links displayed when the user is not logged in -->
                 <a class="nav-link" href="/login">Login</a>
                 <a class="nav-link" href="/register">Register</a>
                 <% } else {%>
+                <!-- Logout option when the user is logged in -->
                 <a class="nav-link" href="/logout">Logout</a>
                 <% } %>
             </div>
