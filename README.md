@@ -38,8 +38,8 @@ Add your own captures under `docs/screenshots/` (create the folder if it does no
 | **Home** | ![Home page](https://github.com/ayushdongre01/NestCampFire/blob/main/images/1.png) |
 | **Campgrounds & map** | ![Campgrounds index with cluster map](docs/screenshots/campgrounds-map.png) |
 | **Campground detail** | ![Single campground with map and reviews](docs/screenshots/campground-show.png) |
-| **Auth** | ![register](https://github.com/ayushdongre01/DocMind/blob/main/images/2.png) |
-| **Auth** | ![Login](https://github.com/ayushdongre01/DocMind/blob/main/images/3.png) |
+| **Auth** | ![register](https://github.com/ayushdongre01/NestCampFire/blob/main/images/2.png) |
+| **Auth** | ![Login](https://github.com/ayushdongre01/NestCampFire/blob/main/images/3.png) |
 
 *If images are missing locally, GitHub will not render previews until you commit the PNG files.*
 
