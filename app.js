@@ -142,6 +142,14 @@ app.use((req,res,next)=>{
 app.get('/',(req,res)=>{
     res.render('home');
 })
+
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+        message: 'NestCampFire is running'
+    });
+});
+
 app.use('/',userRoutes);
 app.use('/campgrounds',campgroundsRoutes);
 app.use('/campgrounds/:id/reviews',reviewsRoutes);
