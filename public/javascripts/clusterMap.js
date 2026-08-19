@@ -8,6 +8,7 @@ const map = new maptilersdk.Map({
     zoom:3   //Initial zoom level for india map
 });
 map.on('load', function () {
+    console.log('CAMPGROUNDS DATA:', campgrounds);
     map.addSource('campgrounds', {
         type: 'geojson',
         data: campgrounds,
