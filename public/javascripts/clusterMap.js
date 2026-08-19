@@ -3,7 +3,7 @@ maptilersdk.config.apiKey = maptilerApiKey;
 
 const map = new maptilersdk.Map({
     container: 'cluster-map',   // HTML container ID
-    style:  "streets-v2",   // Map style
+    style: maptilersdk.MapStyle.STREETS,   // Map style
     center: [78.9629, 20.5937], // Center of India (approximate)
     zoom:3   //Initial zoom level for india map
 });
