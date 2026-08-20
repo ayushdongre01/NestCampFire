@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Glow -->
+    <radialGradient id="ambientGlow" cx="50%" cy="55%" r="48%">
+      <stop offset="0%" stop-color="#FF9100" stop-opacity="0.3"/>
+      <stop offset="55%" stop-color="#FF3D00" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#DD2C00" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Outer Flame: Rich Red-Orange to Vibrant Orange -->
+    <linearGradient id="flameOuter" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#D84315"/>
+      <stop offset="25%" stop-color="#E64A19"/>
+      <stop offset="60%" stop-color="#F4511E"/>
+      <stop offset="100%" stop-color="#FF7043"/>
+    </linearGradient>
+
+    <!-- Mid Flame: Warm Orange to Bright Golden -->
+    <linearGradient id="flameMid" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FF6D00"/>
+      <stop offset="45%" stop-color="#FF9100"/>
+      <stop offset="100%" stop-color="#FFAB00"/>
+    </linearGradient>
+
+    <!-- Core Flame: Warm Golden to Luminous Light Yellow -->
+    <linearGradient id="flameCore" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FFC107"/>
+      <stop offset="40%" stop-color="#FFEB3B"/>
+      <stop offset="100%" stop-color="#FFFDE7"/>
+    </linearGradient>
+
+    <!-- Log Gradients -->
+    <linearGradient id="logGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4E342E"/>
+      <stop offset="35%" stop-color="#6D4C41"/>
+      <stop offset="70%" stop-color="#8D6E63"/>
+      <stop offset="100%" stop-color="#4E342E"/>
+    </linearGradient>
+
+    <linearGradient id="logGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3E2723"/>
+      <stop offset="40%" stop-color="#5D4037"/>
+      <stop offset="75%" stop-color="#795548"/>
+      <stop offset="100%" stop-color="#3E2723"/>
+    </linearGradient>
+
+    <radialGradient id="logCap" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D7CCC8"/>
+      <stop offset="65%" stop-color="#A1887F"/>
+      <stop offset="100%" stop-color="#5D4037"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient background glow -->
+  <circle cx="256" cy="270" r="230" fill="url(#ambientGlow)"/>
+
+  <!-- Back Crossed Log (slanted up to the right) -->
+  <g transform="rotate(18 256 410)">
+    <rect x="76" y="386" width="360" height="52" rx="26" fill="url(#logGrad1)"/>
+    <!-- Log End Rings Left -->
+    <ellipse cx="98" cy="412" rx="16" ry="24" fill="url(#logCap)"/>
+    <ellipse cx="98" cy="412" rx="9" ry="14" fill="none" stroke="#6D4C41" stroke-width="3"/>
+    <ellipse cx="98" cy="412" rx="3" ry="5" fill="#3E2723"/>
+    <!-- Log End Rings Right -->
+    <ellipse cx="414" cy="412" rx="16" ry="24" fill="url(#logCap)"/>
+    <ellipse cx="414" cy="412" rx="9" ry="14" fill="none" stroke="#6D4C41" stroke-width="3"/>
+    <ellipse cx="414" cy="412" rx="3" ry="5" fill="#3E2723"/>
+  </g>
+
+  <!-- Front Crossed Log (slanted down to the right) -->
+  <g transform="rotate(-18 256 410)">
+    <rect x="76" y="386" width="360" height="52" rx="26" fill="url(#logGrad2)"/>
+    <!-- Log End Rings Left -->
+    <ellipse cx="98" cy="412" rx="16" ry="24" fill="url(#logCap)"/>
+    <ellipse cx="98" cy="412" rx="9" ry="14" fill="none" stroke="#6D4C41" stroke-width="3"/>
+    <ellipse cx="98" cy="412" rx="3" ry="5" fill="#3E2723"/>
+    <!-- Log End Rings Right -->
+    <ellipse cx="414" cy="412" rx="16" ry="24" fill="url(#logCap)"/>
+    <ellipse cx="414" cy="412" rx="9" ry="14" fill="none" stroke="#6D4C41" stroke-width="3"/>
+    <ellipse cx="414" cy="412" rx="3" ry="5" fill="#3E2723"/>
+  </g>
+
+  <!-- Hot Embers / Charcoal Base -->
+  <ellipse cx="256" cy="420" rx="72" ry="18" fill="#BF360C"/>
+  <ellipse cx="256" cy="416" rx="46" ry="11" fill="#FF5722"/>
+  <circle cx="225" cy="416" r="6" fill="#FFD54F"/>
+  <circle cx="285" cy="417" r="5" fill="#FFCA28"/>
+  <circle cx="256" cy="412" r="7" fill="#FFF9C4"/>
+
+  <!-- Outer Flame Body -->
+  <path d="M 256,28 
+           C 264,75 285,120 315,152 
+           C 328,115 348,85 365,65
+           C 360,115 390,165 402,230 
+           C 418,300 395,372 345,414 
+           C 318,436 288,446 256,446 
+           C 224,446 194,436 167,414 
+           C 117,372 94,300 110,230 
+           C 122,165 152,115 147,65 
+           C 164,85 184,115 197,152 
+           C 227,120 248,75 256,28 Z"
+        fill="url(#flameOuter)"/>
+
+  <!-- Middle Flame Body -->
+  <path d="M 256,110 
+           C 264,150 282,185 304,212 
+           C 314,180 330,155 342,140
+           C 338,180 358,220 364,265 
+           C 374,320 350,375 315,404 
+           C 297,418 277,426 256,426 
+           C 235,426 215,418 197,404 
+           C 162,375 138,320 148,265 
+           C 154,220 174,180 170,140 
+           C 182,155 198,180 208,212 
+           C 230,185 248,150 256,110 Z"
+        fill="url(#flameMid)"/>
+
+  <!-- Inner Flame (Luminous Core) -->
+  <path d="M 256,190 
+           C 268,230 290,265 298,305 
+           C 308,355 288,396 256,408 
+           C 224,396 204,355 214,305 
+           C 222,265 244,230 256,190 Z"
+        fill="url(#flameCore)"/>
+
+  <!-- Core White-Hot Heart -->
+  <ellipse cx="256" cy="355" rx="24" ry="42" fill="#FFFFFF" opacity="0.92"/>
+
+  <!-- Floating Embers & Sparks -->
+  <circle cx="210" cy="50" r="7" fill="#FFD54F"/>
+  <circle cx="210" cy="50" r="3.5" fill="#FFFDE7"/>
+
+  <circle cx="305" cy="42" r="8" fill="#FFCA28"/>
+  <circle cx="305" cy="42" r="4" fill="#FFFDE7"/>
+
+  <circle cx="385" cy="115" r="9" fill="#FF9800"/>
+  <circle cx="385" cy="115" r="4.5" fill="#FFF8E1"/>
+
+  <circle cx="125" cy="115" r="9" fill="#FF9800"/>
+  <circle cx="125" cy="115" r="4.5" fill="#FFF8E1"/>
+
+  <circle cx="256" cy="12" r="5.5" fill="#FFE082"/>
+  <circle cx="256" cy="12" r="2.5" fill="#FFFFFF"/>
+</svg>
