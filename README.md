@@ -41,8 +41,6 @@ Add your own captures under `docs/screenshots/` (create the folder if it does no
 | **Auth** | ![register](https://github.com/ayushdongre01/NestCampFire/blob/main/images/4.png) |
 | **Auth** | ![Login](https://github.com/ayushdongre01/NestCampFire/blob/main/images/5.png) |
 
-*If images are missing locally, GitHub will not render previews until you commit the PNG files.*
-
 ---
 
 ## Features
@@ -98,8 +96,6 @@ Create a `.env` file in the project root for local development. The app loads it
 | `CLOUDINARY_SECRET` | Yes (uploads) | Cloudinary API secret. |
 | `PORT` | Optional | HTTP port (defaults to `3000`). |
 | `NODE_ENV` | Optional | Set to `production` on hosted deployments; `.env` is not loaded when this is `production`. |
-
-Never commit `.env`; it is listed in `.gitignore`.
 
 ---
 
